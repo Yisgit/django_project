@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Контроль камеры</title>
+  {% load staticfiles %}
+  <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="jumbotron">
+    <div class="container-fluid">
+      <h1>Управление камерой PTZ-FCN-1</h1>
+      <p>
+        <div class="btn-group">
+          <a href="/12cam" class="btn btn-success btn-lg" style="height:50px">Джойстик</a>
+	  <span style='padding-left:10px;'></span>
+	  <a href="/cam12presets" class="btn-success btn-lg" style="height:50px">Пресеты</a>
+	  <span style='padding-left:10px;'></span>
+	  <a href="/" class="btn-danger btn-lg" style="height:50px">Главная>></a> 
+	</div>
+      </p>
+      <hr>
+        <div class="row">
+          <div class="col-md-10">
+	    {% block content %}
+	    {% endblock %} 
+	  </div>
+	</div>  
+    </div>
+  </div>
+  <div class="container">
+    <hr>
+      &copy; МИЭМ НИУ ВШЭ
+  </div>
+</body>
+</html>
+

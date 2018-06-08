@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Контроль камеры</title>
+  {% load staticfiles %}
+  <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="jumbotron">
+    <div class="container-fluid">
+      <h1>Управление камерой PTZ-FCN-1</h1>
+        <div class="row">
+          <div class="col-md-6">
+            <form action='{% url "cam12" %}' method="GET">
+	      <br>
+	      <input type="submit" class="btn btn-success btn-lg" style="width:100px;height:100px" value="l&up" name="leftup" id="toggleleftup" />
+	      <span style='padding-left:18px;'></span>
+	      <input type="submit" class="btn btn-success btn-lg" style="width:100px;height:100px" value="up" name="up" id="toggleup" />
+	      <span style='padding-left:18px;'></span>
+	      <input type="submit" class="btn btn-success btn-lg" style="width:100px;height:100px" value="r&up" name="rightup" id="togglerightup" />
+	      <br><br>
+              <input type="submit" class="btn btn-success btn-lg" style="width:100px;height:100px" value="l" name="left" id="toggleleft" />
+	      <span style='padding-left:18px;'></span>
+              <input type="submit" class="btn btn-default btn-lg" style="width:100px;height:100px" value="" id="togglenone" />
+	      <span style='padding-left:18px;'></span>
+	      <input type="submit" class="btn btn-success btn-lg" style="width:100px;height:100px" value="r" name="right" id="toggleright" />
+	      {% for val in spd %}
+	        <span style='padding-left:25px;'></span>Скорость: 0<input type="range" min="0" max="1" step="0.1" value="{{val}}" name="speedreg" />1
+	      {% endfor %}
+	      <br><br>
+	      <input type="submit" class="btn btn-success btn-lg" style="width:100px;height:100px" value="l&d" name="leftdown" id="toggleleftdown" />
+	      <span style='padding-left:18px;'></span>
+	      <input type="submit" class="btn btn-success btn-lg" style="width:100px;height:100px" value="d" name="down" id="toggledown" />
+	      <span style='padding-left:18px;'></span>
+	      <input type="submit" class="btn btn-success btn-lg" style="width:100px;height:100px" value="r&d" name="rightdown" id="togglerightdown" />
+	    </form> 
+	  </div>
+	  <div class="col-md-6">
+            <form action='{% url "cam12" %}' method="POST">
+      	      <br>
+	      <h3>Список пресетов</h3>
+	      {% for post in object_list %}
+		<input type="radio" name="choice" value="{{post.title}}"
+	      {% endfor %}
+	      <input type="submit" class="btn btn-primary btn-lg" value="Перейти" name="GoTo" id="togglegoto" />
+	    </form>
+	  </div>
+	</div>  
+    </div>
+  </div>
+  <div class="container">
+    <hr>
+      &copy; МИЭМ НИУ ВШЭ
+  </div>
+</body>
+</html>
+

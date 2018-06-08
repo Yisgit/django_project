@@ -1,0 +1,19 @@
+{% extends "cameraui/cam12page.html" %}
+
+{% block content %}
+   <div class="col-md-6">
+     <form action='{% url "cam12pr" %}' method="POST">
+       {% csrf_token %}
+       <br>
+       <h3>Список пресетов</h3>
+       {% for post in obj_list %}
+         <input type="radio" name="choice" value="{{post.id}}" />
+	 <label for="choice"><button disabled class="btn btn-danger btn-lg">{{post.title}}</button></label>
+         <br>
+       {% endfor %}
+       <br>
+       <input type="submit" class="btn btn-primary btn-lg" value="Перейти" name="GoTo" id="togglegoto" />
+     </form>
+   </div>
+{% endblock %}
+
